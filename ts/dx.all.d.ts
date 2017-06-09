@@ -1,7 +1,7 @@
 /*!
 * DevExtreme (dx.all.d.ts)
-* Version: 17.1.3
-* Build date: Wed May 17 2017
+* Version: 17.1.3 (build 17159)
+* Build date: Thu Jun 08 2017
 *
 * Copyright (c) 2012 - 2017 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -703,7 +703,7 @@ declare module DevExpress {
         offset?: any;
     }
     export interface ComponentOptions {
-        /** A handler for the initialized event. Executed when the widget is initialized. */
+        /** A handler for the initialized event. Executed only once, after the widget is initialized. */
         onInitialized?: Function;
         /** A handler for the optionChanged event. Executed after an option of the widget is changed. */
         onOptionChanged?: Function;
@@ -806,6 +806,15 @@ declare module DevExpress {
             take?: number;
             userData?: Object;
             requireTotalCount?: boolean;
+        }
+        export interface DataGridLoadOptions extends LoadOptions {
+            totalSummary?: Object;
+            groupSummary?: Object;
+            requireGroupCount?: boolean;
+        }
+        export interface PivotGridLoadOptions extends LoadOptions {
+            totalSummary?: Object;
+            groupSummary?: Object;
         }
         /** The base class for all Stores. */
         export class Store implements EventsMixin<Store> {
@@ -1266,7 +1275,7 @@ declare module DevExpress {
             selectedItemKeys?: Array<any>;
             /** Specifies which data field provides keys for widget items. */
             keyExpr?: any;
-            /** A handler for the itemDeleting event. */
+            /** A handler for the itemDeleting event. Executed before an item is deleted from the data source. */
             onItemDeleting?: Function;
             /** A handler for the itemDeleted event. */
             onItemDeleted?: Function;
@@ -1364,17 +1373,19 @@ declare module DevExpress {
     }
     /** An object that serves as a namespace for DevExtreme Data Visualization Widgets. */
     export module viz {
-        /** Applies a theme for the entire page with several DevExtreme visualization widgets. */
+        /** Changes the current theme for all data visualization widgets on the page. */
         export function currentTheme(theme: string): void;
-        /** Applies a new theme (with the color scheme defined separately) for the entire page with several DevExtreme visualization widgets. */
+        /** Changes the current theme for all data visualization widgets on the page. The color scheme is defined separately. */
         export function currentTheme(platform: string, colorScheme: string): void;
         /** Registers a new theme based on the existing one. */
         export function registerTheme(customTheme: Object, baseTheme: string): void;
+        /** Refreshes the current theme and palette in all data visualization widgets on the page. */
+        export function refreshTheme(): void;
         /** Allows you to export widgets using their SVG markup. */
         export function exportFromMarkup(markup: string, options: Object): void;
         /** Gets the SVG markup of specific widgets for their subsequent export. */
         export function getMarkup(widgetInstances: Array<Object>): string;
-        /** Applies a predefined or registered custom palette to all visualization widgets at once. */
+        /** Changes the current palette for all data visualization widgets on the page. */
         export function currentPalette(paletteName: string): void;
         /** Obtains the color sets of a predefined or registered palette. */
         export function getPalette(paletteName: string): Object;
@@ -1968,6 +1979,7 @@ declare module DevExpress.ui {
         show(): JQueryPromise<void>;
         /** Toggles the visibility of the widget. */
         toggle(showing: boolean): JQueryPromise<void>;
+        /** An object that serves as a namespace for static methods that affect overlay widgets. */
         /** A static method that specifies the base z-index for all overlay widgets. */
         static baseZIndex(zIndex: number): void;
     }
@@ -1978,7 +1990,7 @@ declare module DevExpress.ui {
         min?: number;
         /** Specifies whether or not to show spin buttons. */
         showSpinButtons?: boolean;
-        useTouchSpinButtons?: boolean;
+        useLargeSpinButtons?: boolean;
         /** Specifies by which value the widget value changes when a spin button is clicked. */
         step?: number;
         /** The current number box value. */
@@ -2432,20 +2444,21 @@ declare module DevExpress.ui {
         /** Returns an HTML element of the popup window content. */
         content(): JQuery;
     }
-    export interface dxDropDownBoxOptions extends dxDropDownEditorOptions {
+    export interface dxDropDownBoxOptions extends dxDropDownEditorOptions, DataExpressionMixinOptions {
         /** Specifies a custom template for the drop-down content. */
         contentTemplate?: any;
         /** Specifies whether the widget allows a user to enter a custom value. */
         acceptCustomValue?: boolean;
         /** Configures the drop-down field which holds the content. */
         dropDownOptions?: DevExpress.ui.dxPopupOptions;
+        valueChangeEvent?: string;
     }
     /** The DropDownBox widget consists of a text field, which displays the current value, and a drop-down field, which can contain any UI element. */
     export class dxDropDownBox extends dxDropDownEditor {
         constructor(element: JQuery, options?: dxDropDownBoxOptions);
         constructor(element: Element, options?: dxDropDownBoxOptions);
     }
-    export interface dxDateBoxOptions extends dxTextEditorOptions {
+    export interface dxDateBoxOptions extends dxDropDownEditorOptions {
         formatString?: any;
         /** Specifies the date display format. Ignored if the pickerType option is 'native' */
         displayFormat?: any;
@@ -3083,6 +3096,7 @@ declare module DevExpress.ui {
         swipeEnabled?: boolean;
         /** A template to be used for rendering widget content. */
         contentTemplate?: any;
+        /** The index number of the currently selected item. */
         selectedIndex?: number;
     }
     /** The SlideOut widget is a classic slide-out menu paired with a view. An end user opens the menu by swiping away the view. */
@@ -3489,7 +3503,7 @@ declare module DevExpress.ui {
             allowMultiple?: boolean;
             /** Indicates whether or not resources of this kind have priority in the color identification of the appointments that have resources of different kinds assigned. */
             mainColor?: boolean;
-            /** Indicates whether or not resources of this kind have priority in the color identification of the appointments that have resources of different kinds assigned. */
+            /** Specifies whether appointments are colored like this resource kind. */
             useColorAsDefault?: boolean;
             /** A data source used to fetch resources to be available in the scheduler. */
             dataSource?: any;
@@ -3889,7 +3903,7 @@ declare module DevExpress.ui {
         allowResizing?: boolean;
         /** Specifies whether a user can sort rows by this column at runtime. Applies only if sorting | mode differs from "none". */
         allowSorting?: boolean;
-        /** Specifies whether this column can be searched. Applies only if searchPanel | visible is true. */
+        /** Specifies whether this column can be searched. Applies only if searchPanel | visible is true. Inherits the value of the allowFiltering option by default. */
         allowSearch?: boolean;
         /** Calculates custom values for column cells. */
         calculateCellValue?: (rowData: Object) => string;
@@ -3921,7 +3935,7 @@ declare module DevExpress.ui {
         falseText?: string;
         /** Fixes the column. */
         fixed?: boolean;
-        /** Specifies the order according to which columns must be concealed when the widget adapts to the screen or container size. */
+        /** Specifies the order in which columns are hidden when the widget adapts to the screen or container size. Ignored if allowColumnResizing is true and columnResizingMode is "widget". */
         hidingPriority?: number;
         /** Specifies the widget's edge to which the column is fixed. Applies only if columns] | [fixed is true. */
         fixedPosition?: string;
@@ -3958,7 +3972,7 @@ declare module DevExpress.ui {
         minWidth?: number;
         /** Specifies validation rules to be checked on updating cell values. */
         validationRules?: Array<Object>;
-        /** Specifies whether the column chooser should contain the column header when the column is hidden. */
+        /** Specifies whether the column chooser can contain the column header. */
         showInColumnChooser?: boolean;
         /** Specifies the identifier of the column. */
         name?: string;
@@ -3968,7 +3982,7 @@ declare module DevExpress.ui {
         ownerBand?: number;
         /** Specifies whether the column bands other columns or not. */
         isBand?: boolean;
-        /** Specifies whether data can be filtered by this column. Applies only if filterRow | visible, headerFilter | visible or searchPanel | visible is true. */
+        /** Specifies whether data can be filtered by this column. Applies only if filterRow | visible is true. */
         allowFiltering?: boolean;
         /** Specifies whether the header filter can be used to filter data by this column. Applies only if headerFilter | visible is true. By default, inherits the value of the allowFiltering option. */
         allowHeaderFiltering?: boolean;
@@ -3982,7 +3996,7 @@ declare module DevExpress.ui {
         filterValues?: Array<any>;
         /** Specifies whether a user changes the current filter by including (selecting) or excluding (clearing the selection of) values. Applies only if headerFilter | visible and allowHeaderFiltering are true. */
         filterType?: string;
-        /** Calculates filters when the column contains custom data. */
+        /** Specifies the column's custom filtering rules. */
         calculateFilterExpression?: (filterValue: any, selectedFilterOperation: string, target: string) => any;
         /** Specifies data settings for the header filter. */
         headerFilter?: {
@@ -4611,7 +4625,7 @@ declare module DevExpress.ui {
                 cancel?: string;
             }
         };
-        /** Specifies whether the widget should hide columns in order to adapt to the screen or container size. */
+        /** Specifies whether the widget should hide columns to adapt to the screen or container size. Ignored if allowColumnResizing is true and columnResizingMode is "widget". */
         columnHidingEnabled?: boolean;
         /** A handler for the adaptiveDetailRowPreparing event. Executed before an adaptive detail row is rendered. */
         onAdaptiveDetailRowPreparing?: (e: Object) => void;
@@ -4619,7 +4633,7 @@ declare module DevExpress.ui {
         errorRowEnabled?: boolean;
         /** Specifies the keys of rows that must be selected initially. Applies only if selection | deferred is false. */
         selectedRowKeys?: Array<any>;
-        /** A handler for the selectionChanged event. Executed after a row has been selected or selection has been cleared. */
+        /** A handler for the selectionChanged event. Executed after selecting a row or clearing its selection. */
         onSelectionChanged?: (e: {
             currentSelectedRowKeys: Array<any>;
             currentDeselectedRowKeys: Array<any>;
@@ -4700,11 +4714,11 @@ declare module DevExpress.ui {
         repaintRows(rowIndexes: Array<number>): void;
         /** Adds a new data row. */
         addRow(): void;
-        /** Switches a specific cell into the editing state. The cell is found by the row index and column index. */
+        /** Switches a specific cell into the editing state. The cell is found by the row index and column index. Takes effect only if the editing mode is 'batch' or 'cell'. */
         editCell(rowIndex: number, visibleColumnIndex: number): void;
-        /** Switches a specific cell into the editing state. The cell is found by the row index and data field. */
+        /** Switches a specific cell into the editing state. The cell is found by the row index and data field. Takes effect only if the editing mode is 'batch' or 'cell'. */
         editCell(rowIndex: number, dataField: string): void;
-        /** Switches a specific row into the editing state. */
+        /** Switches a specific row into the editing state. Takes effect only if the editing mode is 'row', 'popup' or 'form'. */
         editRow(rowIndex: number): void;
         /** Gets the value of a cell found by the row index and data field. */
         cellValue(rowIndex: number, dataField: string): any;
@@ -4734,7 +4748,7 @@ declare module DevExpress.ui {
         collapseAdaptiveDetailRow(): void;
         /** Selects all rows. */
         selectAll(): JQueryPromise<any>;
-        /** Clears selection of all rows on all pages or on the currently rendered page only. */
+        /** Clears the selection of all rows on all pages or the currently rendered page only. */
         deselectAll(): JQueryPromise<any>;
         /** Selects rows by keys. */
         selectRows(keys: Array<any>, preserve: boolean): JQueryPromise<any>;
@@ -4749,7 +4763,7 @@ declare module DevExpress.ui {
         startSelectionWithCheckboxes(): boolean;
         /** Checks whether the row with a specific key is selected. Takes effect only if selection | deferred is false. */
         isRowSelected(arg: any): boolean;
-        /** Seeks a search string in the columns whose allowFiltering option is true. */
+        /** Seeks a search string in the columns whose allowSearch option is true. */
         searchByText(text: string): void;
         /** Sets focus on a specific cell. */
         focus(element?: JQuery): void;

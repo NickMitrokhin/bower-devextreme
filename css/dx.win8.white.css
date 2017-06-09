@@ -1,7 +1,7 @@
 /*!
 * DevExtreme
-* Version: 17.1.3
-* Build date: May 17, 2017
+* Version: 17.1.3 (build 17159)
+* Build date: Jun 8, 2017
 *
 * Copyright (c) 2012 - 2017 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -28,6 +28,20 @@
   -webkit-box-shadow:   inset 0px -5px 0px 3px #FFF , inset 0px 5px 0px 3px #FFF , inset 0px -6px 1px 4px rgba(0, 0, 0, 0.2) , inset 0px 6px 1px 4px rgba(0, 0, 0, 0.2);
   -moz-box-shadow:   inset 0px -5px 0px 3px #FFF , inset 0px 5px 0px 3px #FFF , inset 0px -6px 1px 4px rgba(0, 0, 0, 0.2) , inset 0px 6px 1px 4px rgba(0, 0, 0, 0.2);
   box-shadow:   inset 0px -5px 0px 3px #FFF , inset 0px 5px 0px 3px #FFF , inset 0px -6px 1px 4px rgba(0, 0, 0, 0.2) , inset 0px 6px 1px 4px rgba(0, 0, 0, 0.2);
+}
+.dx-datagrid-borders > .dx-datagrid-headers,
+.dx-datagrid-borders > .dx-datagrid-rowsview,
+.dx-datagrid-borders > .dx-datagrid-total-footer {
+  border-left: 1px solid #c7c7c7;
+  border-right: 1px solid #c7c7c7;
+}
+.dx-datagrid-borders > .dx-datagrid-rowsview,
+.dx-datagrid-borders > .dx-datagrid-total-footer {
+  border-bottom: 1px solid #c7c7c7;
+}
+.dx-datagrid-borders > .dx-datagrid-pager,
+.dx-datagrid-borders > .dx-datagrid-headers {
+  border-top: 1px solid #c7c7c7;
 }
 .dx-datagrid {
   color: #000;
@@ -651,6 +665,20 @@
 .dx-rtl.dx-pivotgrid .dx-pivotgrid-border .dx-area-row-cell,
 .dx-rtl.dx-pivotgrid .dx-pivotgrid-border .dx-data-header {
   border-left: none;
+}
+.dx-treelist-borders > .dx-treelist-headers,
+.dx-treelist-borders > .dx-treelist-rowsview,
+.dx-treelist-borders > .dx-treelist-total-footer {
+  border-left: 1px solid #c7c7c7;
+  border-right: 1px solid #c7c7c7;
+}
+.dx-treelist-borders > .dx-treelist-rowsview,
+.dx-treelist-borders > .dx-treelist-total-footer {
+  border-bottom: 1px solid #c7c7c7;
+}
+.dx-treelist-borders > .dx-treelist-pager,
+.dx-treelist-borders > .dx-treelist-headers {
+  border-top: 1px solid #c7c7c7;
 }
 .dx-treelist-container {
   color: #000;
