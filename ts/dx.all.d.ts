@@ -1,7 +1,7 @@
 /*!
 * DevExtreme (dx.all.d.ts)
-* Version: 17.1.3 (build 17163)
-* Build date: Mon Jun 12 2017
+* Version: 17.1.3 (build 17162)
+* Build date: Sun Jun 11 2017
 *
 * Copyright (c) 2012 - 2017 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
