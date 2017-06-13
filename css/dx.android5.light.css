@@ -1,7 +1,7 @@
 /*!
 * DevExtreme
-* Version: 17.1.3 (build 17159)
-* Build date: Jun 8, 2017
+* Version: 17.1.3 (build 17160)
+* Build date: Jun 9, 2017
 *
 * Copyright (c) 2012 - 2017 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -107,6 +107,15 @@
 .dx-datagrid .dx-datagrid-filter-row .dx-filter-range-content {
   color: rgba(0, 0, 0, 0.87);
 }
+.dx-datagrid .dx-error-row td {
+  color: white;
+  padding: 0;
+}
+.dx-datagrid .dx-error-row .dx-error-message {
+  background-color: #f28f8f;
+  white-space: normal;
+  word-wrap: break-word;
+}
 .dx-datagrid-form-buttons-container {
   float: right;
 }
@@ -156,6 +165,13 @@
 }
 .dx-datagrid-adaptive-more:before {
   content: "\f06c";
+}
+.dx-datagrid-edit-popup .dx-error-message {
+  background-color: #f28f8f;
+  white-space: normal;
+  word-wrap: break-word;
+  color: white;
+  margin-bottom: 20px;
 }
 .dx-rtl .dx-datagrid .dx-datagrid-rowsview .dx-data-row td.dx-pointer-events-none,
 .dx-rtl .dx-datagrid .dx-datagrid-rowsview .dx-freespace-row td.dx-pointer-events-none,
@@ -744,6 +760,15 @@
 .dx-treelist-container .dx-treelist-filter-row .dx-filter-range-content {
   color: rgba(0, 0, 0, 0.87);
 }
+.dx-treelist-container .dx-error-row td {
+  color: white;
+  padding: 0;
+}
+.dx-treelist-container .dx-error-row .dx-error-message {
+  background-color: #f28f8f;
+  white-space: normal;
+  word-wrap: break-word;
+}
 .dx-treelist-form-buttons-container {
   float: right;
 }
@@ -793,6 +818,13 @@
 }
 .dx-treelist-adaptive-more:before {
   content: "\f06c";
+}
+.dx-treelist-edit-popup .dx-error-message {
+  background-color: #f28f8f;
+  white-space: normal;
+  word-wrap: break-word;
+  color: white;
+  margin-bottom: 20px;
 }
 .dx-rtl .dx-treelist-container .dx-treelist-rowsview .dx-data-row td.dx-pointer-events-none,
 .dx-rtl .dx-treelist-container .dx-treelist-rowsview .dx-freespace-row td.dx-pointer-events-none,
@@ -7358,20 +7390,9 @@
 .dx-rtl.dx-datagrid .dx-editor-cell .dx-texteditor.dx-searchbox .dx-placeholder:before {
   padding-right: 26px;
 }
-.dx-datagrid .dx-error-row td {
-  background-color: #f28f8f;
-  color: white;
-  padding: 7px;
-}
-.dx-datagrid .dx-error-row td .dx-error-message {
-  white-space: normal;
-  word-wrap: break-word;
-  padding-right: 35px;
-}
-.dx-datagrid .dx-error-row td .dx-closebutton {
+.dx-datagrid .dx-error-row .dx-closebutton {
   float: right;
-  margin-top: 1px;
-  margin-right: 1px;
+  margin: 8px;
   font: 14px/1 DXIcons;
   width: 14px;
   height: 14px;
@@ -7384,8 +7405,15 @@
   text-align: center;
   line-height: 14px;
 }
-.dx-datagrid .dx-error-row td .dx-closebutton:before {
+.dx-datagrid .dx-error-row .dx-closebutton:before {
   content: "\f00a";
+}
+.dx-datagrid .dx-error-row .dx-error-message {
+  padding: 7px;
+  padding-right: 35px;
+}
+.dx-datagrid-edit-popup .dx-error-message {
+  padding: 7px;
 }
 .dx-datagrid-filter-range-overlay .dx-overlay-content {
   border: 1px solid #CBCBCB;
@@ -8144,20 +8172,9 @@
 .dx-rtl.dx-treelist .dx-editor-cell .dx-texteditor.dx-searchbox .dx-placeholder:before {
   padding-right: 26px;
 }
-.dx-treelist .dx-error-row td {
-  background-color: #f28f8f;
-  color: white;
-  padding: 7px;
-}
-.dx-treelist .dx-error-row td .dx-error-message {
-  white-space: normal;
-  word-wrap: break-word;
-  padding-right: 35px;
-}
-.dx-treelist .dx-error-row td .dx-closebutton {
+.dx-treelist .dx-error-row .dx-closebutton {
   float: right;
-  margin-top: 1px;
-  margin-right: 1px;
+  margin: 8px;
   font: 14px/1 DXIcons;
   width: 14px;
   height: 14px;
@@ -8170,8 +8187,15 @@
   text-align: center;
   line-height: 14px;
 }
-.dx-treelist .dx-error-row td .dx-closebutton:before {
+.dx-treelist .dx-error-row .dx-closebutton:before {
   content: "\f00a";
+}
+.dx-treelist .dx-error-row .dx-error-message {
+  padding: 7px;
+  padding-right: 35px;
+}
+.dx-treelist-edit-popup .dx-error-message {
+  padding: 7px;
 }
 .dx-treelist-filter-range-overlay .dx-overlay-content {
   border: 1px solid #CBCBCB;
