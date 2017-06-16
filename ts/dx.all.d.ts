@@ -1,7 +1,7 @@
 /*!
 * DevExtreme (dx.all.d.ts)
-* Version: 17.1.3 (build 17163)
-* Build date: Mon Jun 12 2017
+* Version: 17.1.3 (build 17167)
+* Build date: Fri Jun 16 2017
 *
 * Copyright (c) 2012 - 2017 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -491,7 +491,7 @@ declare module DevExpress {
         currency?: String;
         /** Specifies a precision for values of a numeric format. */
         precision?: number;
-        /** Parses string values into numeric or date-time values. */
+        /** Parses string values into numeric or date-time values. Always used with formatter. */
         parser?: (value: any) => any;
         /** Specifies a custom format. */
         formatter?: (value: any) => any;
@@ -1405,7 +1405,7 @@ declare module DevExpress.ui {
         applyValidationResults?: (params: validationEngine.ValidatorValidationResult) => void;
         /** A function that resets the validated values. */
         reset?: Function;
-        /** A function that sets focus to the validated editors when the ValidationSummary is focused. */
+        /** A function that sets focus to a validated editor when the corresponding ValidationSummary item is focused. */
         focus?: Function;
         /** A function that returns a Boolean value specifying whether or not to bypass validation. */
         bypass?: Function;
@@ -1988,8 +1988,9 @@ declare module DevExpress.ui {
         max?: number;
         /** The minimum value accepted by the number box. */
         min?: number;
-        /** Specifies whether or not to show spin buttons. */
+        /** Specifies whether to show the buttons that change the value by a step. */
         showSpinButtons?: boolean;
+        /** Specifies whether to use touch friendly spin buttons. Applies only if showSpinButtons is true. */
         useLargeSpinButtons?: boolean;
         /** Specifies by which value the widget value changes when a spin button is clicked. */
         step?: number;
@@ -2208,7 +2209,10 @@ declare module DevExpress.ui {
     }
     export interface dxLoadPanelOptions extends dxOverlayOptions {
         /** An object defining the animation options of the widget. */
-        animation?: fx.AnimationOptions;
+        animation?: {
+            show?: fx.AnimationOptions;
+            hide?: fx.AnimationOptions;
+        };
         /** The delay in milliseconds after which the load panel is displayed. */
         delay?: number;
         /** The height of the widget. */
@@ -2451,6 +2455,7 @@ declare module DevExpress.ui {
         acceptCustomValue?: boolean;
         /** Configures the drop-down field which holds the content. */
         dropDownOptions?: DevExpress.ui.dxPopupOptions;
+        /** Specifies after which DOM events the widget updates the value. */
         valueChangeEvent?: string;
     }
     /** The DropDownBox widget consists of a text field, which displays the current value, and a drop-down field, which can contain any UI element. */

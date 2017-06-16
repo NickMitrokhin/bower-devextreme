@@ -1,7 +1,7 @@
 /*!
 * DevExtreme
-* Version: 17.1.3 (build 17163)
-* Build date: Jun 12, 2017
+* Version: 17.1.3 (build 17167)
+* Build date: Jun 16, 2017
 *
 * Copyright (c) 2012 - 2017 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -8022,12 +8022,16 @@
   font-weight: normal;
   -ms-touch-action: pinch-zoom;
   touch-action: pinch-zoom;
+  border-bottom: 1px solid #ddd;
 }
 .dx-datagrid-borders .dx-datagrid-headers .dx-datagrid-table {
   border-bottom-width: 1px;
 }
 .dx-datagrid-headers .dx-datagrid-table .dx-row > td {
   border-bottom: 1px solid #ddd;
+}
+.dx-datagrid-headers .dx-datagrid-table .dx-row:last-child > td {
+  border-bottom-width: 0;
 }
 .dx-datagrid-filter-row .dx-menu .dx-overlay-content {
   color: #333;
@@ -8996,12 +9000,16 @@
   font-weight: normal;
   -ms-touch-action: pinch-zoom;
   touch-action: pinch-zoom;
+  border-bottom: 1px solid #ddd;
 }
 .dx-treelist-borders .dx-treelist-headers .dx-treelist-table {
   border-bottom-width: 1px;
 }
 .dx-treelist-headers .dx-treelist-table .dx-row > td {
   border-bottom: 1px solid #ddd;
+}
+.dx-treelist-headers .dx-treelist-table .dx-row:last-child > td {
+  border-bottom-width: 0;
 }
 .dx-treelist-filter-row .dx-menu .dx-overlay-content {
   color: #333;
