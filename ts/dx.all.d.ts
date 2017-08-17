@@ -1,7 +1,7 @@
 /*!
 * DevExtreme (dx.all.d.ts)
-* Version: 17.1.5 (build 17229)
-* Build date: Thu Aug 17 2017
+* Version: 17.1.5 (build 17225)
+* Build date: Sun Aug 13 2017
 *
 * Copyright (c) 2012 - 2017 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -3586,9 +3586,9 @@ declare module DevExpress.ui {
         constructor(element: Element, options?: dxSchedulerOptions);
         /** Add the appointment defined by the object passed as a parameter to the data associated with the widget. */
         addAppointment(appointment: Object): void;
-        /** Updates the appointment specified by the first method parameter by the appointment object specified by the second method parameter in the data associated with the widget. */
+        /** Updates the appointment specified by the first method parameter by the appointment object specified by the second method parameter in the the data associated with the widget. */
         updateAppointment(target: Object, appointment: Object): void;
-        /** Deletes the appointment defined by the parameter from the data associated with the widget. */
+        /** Deletes the appointment defined by the parameter from the the data associated with the widget. */
         deleteAppointment(appointment: Object): void;
         /** Scrolls the scheduler work space to the specified time of the specified day. */
         scrollToTime(hours: number, minutes: number, date: Date): void;
