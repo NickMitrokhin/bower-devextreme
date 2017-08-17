@@ -1,7 +1,7 @@
 /*!
 * DevExtreme (dx.all.d.ts)
-* Version: 17.1.5 (build 17225)
-* Build date: Sun Aug 13 2017
+* Version: 17.1.5 (build 17223)
+* Build date: Fri Aug 11 2017
 *
 * Copyright (c) 2012 - 2017 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -745,9 +745,9 @@ declare module DevExpress {
         bindingOptions?: { [key: string]: any; };
     }
     export interface DOMComponentOptions extends DOMComponentOptionsBase {
-        /** Specifies the widget's height. */
+        /** Specifies the height of the widget container. */
         height?: any;
-        /** Specifies the widget's width. */
+        /** Specifies the width of the widget container. */
         width?: any;
     }
     /** A base class for all components. */
@@ -1883,7 +1883,7 @@ declare module DevExpress.ui {
             /** An object that defines the animation options used when the widget is being hidden. */
             hide?: fx.AnimationOptions;
         };
-        /** Specifies the widget's height. */
+        /** Specifies the height of the widget. */
         height?: any;
         /** An object defining widget positioning options. */
         position?: PositionOptions;
@@ -1892,7 +1892,7 @@ declare module DevExpress.ui {
         showTitle?: boolean;
         /** The target element associated with a popover. */
         target?: any;
-        /** Specifies the widget's width. */
+        /** Specifies the width of the widget. */
         width?: any;
         /** Specifies options for displaying the widget. */
         showEvent?: {
@@ -2071,7 +2071,7 @@ declare module DevExpress.ui {
         onClick?: any;
         /** Specifies whether or not map widget controls are available. */
         controls?: boolean;
-        /** Specifies the widget's height. */
+        /** Specifies the height of the widget. */
         height?: any;
         /** A key used to authenticate the application within the required map provider. */
         key?: {
@@ -2102,7 +2102,7 @@ declare module DevExpress.ui {
         routes?: Array<dxMapRoute>;
         /** The type of a map to display. */
         type?: string;
-        /** Specifies the widget's width. */
+        /** Specifies the width of the widget. */
         width?: any;
         /** The zoom level of the map. */
         zoom?: number;
@@ -2224,7 +2224,7 @@ declare module DevExpress.ui {
         showIndicator?: boolean;
         /** A Boolean value specifying whether or not to show the pane behind the load indicator. */
         showPane?: boolean;
-        /** Specifies the widget's width. */
+        /** The width of the widget. */
         width?: number;
         /** Specifies whether or not the widget can be focused. */
         focusStateEnabled?: boolean;
@@ -2626,7 +2626,7 @@ declare module DevExpress.ui {
     export interface dxAccordionOptions extends CollectionWidgetOptions {
         /** A number specifying the time in milliseconds spent on the animation of the expanding or collapsing of a panel. */
         animationDuration?: number;
-        /** Specifies the widget's height. */
+        /** Specifies the height of the widget. */
         height?: any;
         /** Specifies whether all items can be collapsed or whether at least one item must always be expanded. */
         collapsible?: boolean;
@@ -3023,7 +3023,7 @@ declare module DevExpress.ui {
         baseItemWidth?: number;
         /** Specifies whether tiles are placed horizontally or vertically. */
         direction?: string;
-        /** Specifies the widget's height. */
+        /** Specifies the height of the widget. */
         height?: any;
         /** Specifies the distance in pixels between adjacent tiles. */
         itemMargin?: number;
