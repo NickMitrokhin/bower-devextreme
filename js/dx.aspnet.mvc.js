@@ -1,7 +1,7 @@
 /*!
 * DevExtreme (dx.aspnet.mvc.js)
-* Version: 17.1.3 (build 17165)
-* Build date: Wed Jun 14 2017
+* Version: 17.1.5 (build 17228)
+* Build date: Wed Aug 16 2017
 *
 * Copyright (c) 2012 - 2017 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -44,7 +44,7 @@
                 bag.push(encode ? encodeHtml(value) : value);
                 bag.push(");")
             } else {
-                bag.push(code)
+                bag.push(code + "\n")
             }
         }
         return function(text) {
@@ -59,7 +59,7 @@
                 acceptCode(bag, tmp[0]);
                 acceptText(bag, tmp[1])
             }
-            bag.push("};", "return _.join('')");
+            bag.push("}", "return _.join('')");
             return new Function("obj", bag.join(""))
         }
     }
@@ -110,17 +110,23 @@
         });
         return items
     }
+
+    function createComponent(name, options, id, validatorOptions) {
+        var render = function(_, container) {
+            var selector = "#" + id.replace(/[^\w-]/g, "\\$&"),
+                $component = $(selector, container)[name](options);
+            if ($.isPlainObject(validatorOptions)) {
+                $component.dxValidator(validatorOptions)
+            }
+            templateRendered.remove(render)
+        };
+        templateRendered.add(render)
+    }
     return {
+        createComponent: createComponent,
         renderComponent: function(name, options, id, validatorOptions) {
             id = id || "dx-" + new Guid;
-            var render = function(_, container) {
-                var $component = $("#" + id, container)[name](options);
-                if ($.isPlainObject(validatorOptions)) {
-                    $component.dxValidator(validatorOptions)
-                }
-                templateRendered.remove(render)
-            };
-            templateRendered.add(render);
+            createComponent(name, options, id, validatorOptions);
             return '<div id="' + id + '"></div>'
         },
         getEditorValue: function(inputName) {
@@ -134,7 +140,9 @@
             }
         },
         setTemplateEngine: function() {
-            setTemplateEngine(createTemplateEngine())
+            if (setTemplateEngine) {
+                setTemplateEngine(createTemplateEngine())
+            }
         },
         createValidationSummaryItems: function(validationGroup, editorNames) {
             var groupConfig, items, summary = getValidationSummary(validationGroup);
